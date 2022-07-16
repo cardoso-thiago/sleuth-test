@@ -18,6 +18,11 @@ public class SleuthController {
         return "Hello " + sleuthService.hello();
     }
 
+    @GetMapping("/helloJersey")
+    public String helloJersey() {
+        return "Hello " + sleuthService.helloJersey();
+    }
+
     @GetMapping("/world")
     public String world() {
         return "World";

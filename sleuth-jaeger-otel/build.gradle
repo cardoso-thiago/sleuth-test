@@ -21,8 +21,13 @@ dependencies {
 		exclude module: 'spring-cloud-sleuth-brave'
 	}
 	implementation 'org.springframework.cloud:spring-cloud-sleuth-otel-autoconfigure:1.1.0-M6'
+
 	implementation 'io.opentelemetry:opentelemetry-exporter-otlp-trace:1.14.0'
 	implementation 'io.grpc:grpc-okhttp:1.47.0'
+
+	implementation 'org.glassfish.jersey.core:jersey-client:2.36'
+	implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:2.36'
+	implementation 'org.glassfish.jersey.inject:jersey-hk2:2.36'
 }
 
 tasks.named('test') {

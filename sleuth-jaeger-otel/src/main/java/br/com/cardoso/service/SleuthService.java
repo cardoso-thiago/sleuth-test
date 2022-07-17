@@ -27,7 +27,8 @@ public class SleuthService {
     public String helloJersey() {
         String path = "http://localhost:8080/world";
         Client client = ClientBuilder.newBuilder().build();
-        WebTarget webTarget = client.target(path);
+        WebTarget webTarget = client
+                .target(path);
         Response response = webTarget.request().get();
         return response.readEntity(String.class);
     }

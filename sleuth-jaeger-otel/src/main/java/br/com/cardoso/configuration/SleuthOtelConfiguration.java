@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 public class SleuthOtelConfiguration {
 
     @Bean
-    Resource otelResource(Environment env, ObjectProvider<List<Supplier<Resource>>> resourceProviders) {
+    public Resource otelResource(Environment env, ObjectProvider<List<Supplier<Resource>>> resourceProviders) {
         //Customizando o nome do service name
         String applicationName = env.getProperty("application.name");
         Resource resource = defaultResource(applicationName);
@@ -28,7 +28,6 @@ public class SleuthOtelConfiguration {
     }
 
     private Resource defaultResource(String applicationName) {
-        return Resource.getDefault()
-                .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, applicationName)));
+        return Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, applicationName)));
     }
 }

@@ -18,7 +18,7 @@ public class SleuthOtelConfiguration {
     @Bean
     Resource otelResource(Environment env, ObjectProvider<List<Supplier<Resource>>> resourceProviders) {
         //Customizando o nome do service name
-        String applicationName = "application-name-test";
+        String applicationName = env.getProperty("application.name");
         Resource resource = defaultResource(applicationName);
         List<Supplier<Resource>> resourceCustomizers = resourceProviders.getIfAvailable(ArrayList::new);
         for (Supplier<Resource> provider : resourceCustomizers) {

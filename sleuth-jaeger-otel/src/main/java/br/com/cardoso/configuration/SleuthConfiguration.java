@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class SleuthConfiguration {
 
-    //Configura o tracing para o RestTemplate através da classe TracingRestTemplateCustomizer
+    //Configura o tracing para o RestTemplate através da classe TracingClientHttpRequestInterceptor
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();

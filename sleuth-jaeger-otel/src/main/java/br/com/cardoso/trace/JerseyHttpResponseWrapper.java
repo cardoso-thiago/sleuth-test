@@ -26,6 +26,12 @@ public class JerseyHttpResponseWrapper implements HttpClientResponse {
         this.error = error;
     }
 
+    JerseyHttpResponseWrapper(JerseyHttpRequestWrapper request, ClientResponseContext response) {
+        this.request = request;
+        this.response = response;
+        this.error = null;
+    }
+
     @Override
     public Collection<String> headerNames() {
         return this.response != null ? this.response.getHeaders().keySet() : Collections.emptyList();

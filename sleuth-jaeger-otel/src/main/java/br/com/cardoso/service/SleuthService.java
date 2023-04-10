@@ -38,4 +38,12 @@ public class SleuthService {
         Response response = webTarget.request().get();
         return response.readEntity(String.class);
     }
+
+    public String helloJerseyWithoutSpringTracing() {
+        String path = "http://localhost:8080/world";
+        Client client = ClientBuilder.newBuilder().build();
+        WebTarget webTarget = client.target(path);
+        Response response = webTarget.request().get();
+        return response.readEntity(String.class);
+    }
 }

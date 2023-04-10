@@ -4,6 +4,7 @@ import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.sdk.resources.Resource;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.cloud.sleuth.otel.bridge.OtelTracer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -29,5 +30,10 @@ public class SleuthOtelConfiguration {
 
     private Resource defaultResource(String applicationName) {
         return Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, applicationName)));
+    }
+
+    @Bean
+    public CorrelationIdEventListener correlationIdEventListener(OtelTracer otelTracer) {
+        return new CorrelationIdEventListener(otelTracer.currentSpanCustomizer());
     }
 }
